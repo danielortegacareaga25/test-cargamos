@@ -1,0 +1,47 @@
+.actions {
+    &-container {
+        width: 100%;
+        display: flex;
+        flex-flow: column nowrap;
+        margin-top: 16px;
+        >* {
+            margin-bottom: 16px;
+            ;
+        }
+        @media (min-width: 768px) {
+            margin-top: 63px;
+            margin-bottom: 58px;
+            flex-flow: row nowrap;
+            justify-content: space-between;
+        }
+        button {
+            font-weight: bold;
+        }
+    }
+    &-rigth {
+        >* {
+            margin-bottom: 16px;
+            ;
+            @media (min-width: 768px) {
+                margin-bottom: 0px;
+            }
+        }
+    }
+    &-history {
+        background-color: white;
+        width: 100%;
+        @media (min-width: 768px) {
+            width: auto;
+            margin-right: 57px;
+        }
+    }
+    &-filter {
+        border: none;
+        border-bottom: 1px solid #A0A0A0;
+        width: 473px;
+        &:focus {
+            outline: none;
+            border-color: var(--brand-color-2);
+        }
+    }
+}

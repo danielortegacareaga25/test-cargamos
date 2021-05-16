@@ -1,0 +1,73 @@
+<div class="new-container">
+    <form [formGroup]="myFormTask" (ngSubmit)="createTask()">
+        <h2 class="new-title">Crear nueva tarea</h2>
+        <div class="new-control">
+            <label for="description" class="form-label">Description</label>
+            <input formControlName="description" type="text" class="form-control" [class.is-invalid]="
+          myFormTask.get('description').hasError('required') &&
+          (myFormTask.get('description').touched ||
+            !myFormTask.get('description').pristine)
+        " id="email" placeholder="Mi tarea es ...." />
+            <p *ngIf="
+          myFormTask.get('description').hasError('required') &&
+          (myFormTask.get('description').touched ||
+            !myFormTask.get('description').pristine)
+        " class="text-danger">
+                La descripción es obligatoria
+            </p>
+        </div>
+        <div class="new-control">
+            <label for="duration" class="form-label">Duración</label>
+            <select formControlName="duration" id="duration" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
+        <option value="short">Corta (30 min)</option>
+        <option value="medium">Mediana (45 min)</option>
+        <option value="large">Larga (1 hora)</option>
+        <option value="manual">Manual</option>
+      </select>
+        </div>
+        <div class="new-control" *ngIf="enableCustomDuration">
+            <div class="row">
+                <div class="col-12 col-md-4 col-sm-12 col-xs-12">
+                    <label for="hours" class="form-label">Horas</label>
+                    <select formControlName="hours" id="hours" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
+            <option
+              *ngFor="let hour of optionsHours; let i = index"
+              [value]="i"
+            >
+              {{ i | fillZeros }}
+            </option>
+          </select>
+                </div>
+                <div class="col-12 col-md-4 col-sm-12 col-xs-12">
+                    <label for="minutes" class="form-label">Minutos</label>
+                    <select formControlName="minutes" id="minutes" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
+            <option
+              *ngFor="let hour of optionsMinutes; let i = index"
+              [value]="i"
+            >
+              {{ i | fillZeros }}
+            </option>
+          </select>
+                </div>
+                <div class="col-12 col-md-4 col-sm-12 col-xs-12">
+                    <label for="seconds" class="form-label">Segundos</label>
+                    <select formControlName="seconds" id="seconds" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
+            <option
+              *ngFor="let hour of optionsSeconds; let i = index"
+              [value]="i"
+            >
+              {{ i | fillZeros }}
+            </option>
+          </select>
+                </div>
+            </div>
+        </div>
+
+        <div class="new-actions d-grid">
+            <button type="submit" class="btn btn-dark btn-lg new-enter" [disabled]="myFormTask.invalid">
+        Crear
+      </button>
+        </div>
+    </form>
+    <!-- {{ myFormTask.value | json }} -->
+</div>

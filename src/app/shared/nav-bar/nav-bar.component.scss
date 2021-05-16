@@ -1,0 +1,10 @@
+.navbar {
+    &-container {
+        @media (min-width: 768px) {
+            padding: 26px 58px 26px 62px;
+        }
+    }
+    &-logo {
+        margin-right: 32px;
+    }
+}

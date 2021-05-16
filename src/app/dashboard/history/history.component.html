@@ -1,0 +1,7 @@
+<div class="history-container">
+    <h2>Mi historial del {{ dateSevenDaysAgo }} al {{ dateToday }}</h2>
+    <div class="chart" *ngIf="ThereIsData">
+        <canvas baseChart [datasets]="barChartData" [labels]="barChartLabels" [options]="barChartOptions" [plugins]="barChartPlugins" [legend]="barChartLegend" [chartType]="barChartType">
+    </canvas>
+    </div>
+</div>

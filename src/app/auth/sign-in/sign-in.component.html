@@ -1,0 +1,53 @@
+<app-card>
+    <form [formGroup]="myFormLogin" (ngSubmit)="login()">
+        <h2 class="sign-title">Ingresar</h2>
+        <div class="sign-control">
+            <label for="email" class="form-label">Email</label>
+            <input formControlName="email" type="email" class="form-control" [class.is-invalid]="
+          (myFormLogin.get('email').hasError('required') ||
+            myFormLogin.get('email').hasError('email')) &&
+          (myFormLogin.get('email').touched ||
+            !myFormLogin.get('email').pristine)
+        " id="email" placeholder="name@example.com" />
+            <p *ngIf="
+          myFormLogin.get('email').hasError('required') &&
+          (myFormLogin.get('email').touched ||
+            !myFormLogin.get('email').pristine)
+        " class="text-danger">
+                El email es obligatorio
+            </p>
+            <p *ngIf="
+          myFormLogin.get('email').hasError('email') &&
+          (myFormLogin.get('email').touched ||
+            !myFormLogin.get('email').pristine)
+        " class="text-danger">
+                El email no es valido
+            </p>
+        </div>
+        <div class="sign-control">
+            <label for="password" class="form-label">Contraseña</label>
+            <input formControlName="password" type="password" class="form-control" [class.is-invalid]="
+          myFormLogin.get('password').hasError('required') &&
+          (myFormLogin.get('password').touched ||
+            !myFormLogin.get('password').pristine)
+        " id="password" placeholder="******" />
+            <p *ngIf="
+          myFormLogin.get('password').hasError('required') &&
+          (myFormLogin.get('password').touched ||
+            !myFormLogin.get('password').pristine)
+        " class="text-danger">
+                La contraseña es obligatoria
+            </p>
+        </div>
+        <div class="sign-actions d-grid">
+            <button type="submit" class="btn btn-dark btn-lg sign-enter" [disabled]="myFormLogin.invalid">
+        Ingresar
+      </button>
+            <button type="button" class="btn btn-danger btn-lg sign-google" (click)="OpenGoogle()">
+        <i class="bi bi-google"></i>
+      </button>
+
+            <a class="sign-register" routerLink="../register-user">Registrate</a>
+        </div>
+    </form>
+</app-card>

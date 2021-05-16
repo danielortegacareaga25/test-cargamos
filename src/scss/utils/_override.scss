@@ -1,0 +1,8 @@
+@mixin reset-input {
+    &:focus,
+    &:active,
+    &:hover {
+        border-color: var(--brand-color-2);
+        box-shadow: 3px 3px 3px rgba( var(--brand-color-2), 0.15);
+    }
+}

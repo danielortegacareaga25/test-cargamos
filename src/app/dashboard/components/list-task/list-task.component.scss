@@ -1,0 +1,19 @@
+.list {
+    &-controls {
+        width: 100%;
+        display: flex;
+        justify-content: space-around;
+        i {
+            font-size: 19px;
+            cursor: pointer;
+            &:hover {
+                color: var(--indication-color-2);
+            }
+        }
+    }
+    &-dropdown {
+        button {
+            box-shadow: none;
+        }
+    }
+}

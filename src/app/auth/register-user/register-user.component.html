@@ -1,0 +1,88 @@
+<app-card>
+    <form [formGroup]="myFormRegister" (ngSubmit)="register()">
+        <h2 class="register-title">Registrate</h2>
+        <div class="register-control">
+            <label for="email" class="form-label">Email</label>
+            <input formControlName="email" id="email" type="email" class="form-control" [class.is-invalid]="
+          (myFormRegister.get('email').hasError('required') ||
+            myFormRegister.get('email').hasError('email')) &&
+          (myFormRegister.get('email').touched ||
+            !myFormRegister.get('email').pristine)
+        " placeholder="name@example.com" />
+            <p *ngIf="
+          myFormRegister.get('email').hasError('required') &&
+          (myFormRegister.get('email').touched ||
+            !myFormRegister.get('email').pristine)
+        " class="text-danger">
+                El email es obligatorio
+            </p>
+            <p *ngIf="
+          myFormRegister.get('email').hasError('email') &&
+          (myFormRegister.get('email').touched ||
+            !myFormRegister.get('email').pristine)
+        " class="text-danger">
+                El email no es valido
+            </p>
+        </div>
+        <div class="register-control">
+            <label for="password" class="form-label">Contraseña</label>
+            <input formControlName="password" id="password" type="password" class="form-control" [class.is-invalid]="
+          myFormRegister.get('password').hasError('required') &&
+          (myFormRegister.get('password').touched ||
+            !myFormRegister.get('password').pristine)
+        " placeholder="******" />
+            <p *ngIf="
+          myFormRegister.get('password').hasError('required') &&
+          (myFormRegister.get('password').touched ||
+            !myFormRegister.get('password').pristine)
+        " class="text-danger">
+                La contraseña es obligatoria
+            </p>
+        </div>
+        <div class="register-control">
+            <label for="confirmPassword" class="form-label">Confirma la contraseña</label
+      >
+      <input
+        formControlName="confirmPassword"
+        id="confirmPassword"
+        type="password"
+        class="form-control"
+        [class.is-invalid]="
+          myFormRegister.get('confirmPassword').hasError('required') &&
+          (myFormRegister.get('confirmPassword').touched ||
+            !myFormRegister.get('confirmPassword').pristine)
+        "
+        placeholder="******"
+      />
+      <p
+        *ngIf="
+          myFormRegister.get('confirmPassword').hasError('required') &&
+          (myFormRegister.get('confirmPassword').touched ||
+            !myFormRegister.get('confirmPassword').pristine)
+        "
+        class="text-danger"
+      >
+        La confirmación de contraseña es obligatoria
+      </p>
+      <p
+        *ngIf="
+          myFormRegister.hasError('noMatchPassword') &&
+          (myFormRegister.touched || !myFormRegister.pristine)
+        "
+        class="text-danger"
+      >
+        Las contraseñas no coinciden
+      </p>
+    </div>
+    <div class="register-actions d-grid">
+      <button
+        class="btn btn-dark btn-lg register-register"
+        [disabled]="myFormRegister.invalid"
+      >
+        Registrar
+      </button>
+
+      <a class="register-sign-up" routerLink="../sign-in">Ya tengo cuenta</a>
+    </div>
+  </form>
+</app-card>

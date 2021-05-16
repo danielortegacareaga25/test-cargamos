@@ -1,0 +1,49 @@
+<table class="table">
+    <thead>
+        <tr class="table-dark">
+            <th scope="col">Descripción de la tarea</th>
+            <th scope="col">Tiempo asignado a la tarea</th>
+            <th scope="col">Tiempo restante</th>
+            <th scope="col">Controles</th>
+            <th scope="col">Finalizada</th>
+            <th scope="col">Tiempo en completarse</th>
+            <th scope="col">Opciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let p of listTasks">
+            <td scope="row">{{ p.description }}1</td>
+            <td>{{ p.timeToDo }}</td>
+            <td>{{ p.timeLeft }}</td>
+            <td>
+                <div class="list-controls">
+                    <i class="bi bi-play-fill" (click)="playTask(p)"></i>
+                    <i class="bi bi-pause-fill" (click)="pauseTask(p)"></i>
+                    <i class="bi bi-arrow-clockwise" (click)="refreshTask(p)"></i>
+                </div>
+            </td>
+            <td>{{ p.status }}</td>
+            <td>{{ p.timeToComplete }}</td>
+            <td>
+                <div class="dropdown list-dropdown">
+                    <button [disabled]="p.status === 'En curso'" class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+            <i class="bi bi-caret-up-fill"></i>
+            Opciones
+          </button>
+                    <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton1">
+                        <li>
+                            <span class="dropdown-item" (click)="editTask(p)">Editar</span>
+                        </li>
+                        <li>
+                            <span class="dropdown-item" (click)="deleteTask(p)">Borrar</span>
+                        </li>
+                        <li>
+                            <span class="dropdown-item" (click)="finishTask(p)">Finalizar</span
+              >
+            </li>
+          </ul>
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>

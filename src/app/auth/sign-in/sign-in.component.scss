@@ -1,0 +1,44 @@
+@import './../../../scss/styles.scss';
+.sign {
+    &-title {
+        margin-bottom: 16px;
+    }
+    &-control {
+        display: flex;
+        flex-direction: column;
+        box-shadow: 3px 3px 3px rgba( var(--brand-color-2), 0.15);
+        input {
+            @include reset-input;
+        }
+    }
+    &-actions {
+        margin-top: 16px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    &-enter {
+        transition: all .3s ease;
+        &:hover {
+            background-color: var(--brand-color-2);
+            color: var(--brand-color-1);
+            border-color: var(--brand-color-2);
+        }
+    }
+    &-google {
+        display: block;
+        text-align: center;
+        margin-top: 16px;
+        color: white;
+    }
+    &-register {
+        text-decoration: none;
+        display: inline-block;
+        margin-top: 16px;
+        text-align: center;
+        cursor: pointer;
+        &:visited {
+            color: var(--text-color-1);
+        }
+    }
+}
