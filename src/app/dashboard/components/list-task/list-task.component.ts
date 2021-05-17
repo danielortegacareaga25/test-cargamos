@@ -18,16 +18,16 @@ export class ListTaskComponent implements OnInit {
   }
 
   playTask(tark: ITask) {
-    this.taskService.playTask(tark.id);
+    this.taskService.PlayTask(tark.id);
 
   }
 
   pauseTask(task: ITask) {
-    this.taskService.stopTask(task.id);
+    this.taskService.StopTask(task.id);
   }
 
   refreshTask(task: ITask) {
-    this.taskService.resetTask(task.id);
+    this.taskService.ResetTask(task.id);
   }
 
   editTask(task: ITask) {
@@ -35,10 +35,10 @@ export class ListTaskComponent implements OnInit {
   }
 
   deleteTask(task: ITask) {
-    this.taskService.delete(task.id);
+    this.taskService.Delete(task.id);
   }
 
   finishTask(task: ITask) {
-    this.taskService.finishTask(task.id);
+    this.taskService.FinishTask(task.id);
   }
 }

@@ -21,12 +21,12 @@ export class TasksComponent implements OnInit {
   constructor(private taskService: TaskService, private authService: AuthService) { }
 
   ngOnInit(): void {
-    this.authService.getUser().then(user => this.initialize(user));
+    this.authService.GetUser().then(user => this.initialize(user));
   }
 
   private initialize(user: IUser) {
     this.User = user;
-    this.taskService.getAll(user).subscribe(v => this.ListTasks = v);
+    this.taskService.GetAll(user).subscribe(v => this.ListTasks = v);
   }
 
 }

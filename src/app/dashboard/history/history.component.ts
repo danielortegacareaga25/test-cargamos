@@ -21,7 +21,6 @@ export class HistoryComponent implements OnInit {
   public dateSevenDaysAgo = format(subDays(new Date(), 7), 'MM/dd/yyyy');
   public barChartOptions: ChartOptions = {
     responsive: true,
-    // We use these empty structures as placeholders for dynamic theming.
     scales: { xAxes: [{}], yAxes: [{}] },
     plugins: {
       datalabels: {
@@ -45,11 +44,11 @@ export class HistoryComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.authService.getUser().then(user => this.initialize(user));
+    this.authService.GetUser().then(user => this.initialize(user));
   }
 
   private initialize(user: IUser) {
-    this.taskService.getAll(user).pipe(map(tasks => tasks.filter(t => new Date(t.dateCreateAt as number) > subDays(new Date(), 7)))).subscribe((data) => {
+    this.taskService.GetAll(user).pipe(map(tasks => tasks.filter(t => new Date(t.dateCreateAt as number) > subDays(new Date(), 7)))).subscribe((data) => {
       this.barChartData[0].data = [data.filter(d => d.status === StatusTask.finished).length];
       this.barChartData[1].data = [data.filter(d => d.status === StatusTask.current).length];
       this.barChartData[2].data = [data.filter(d => d.status === StatusTask.pending).length];

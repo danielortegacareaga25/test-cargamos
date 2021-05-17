@@ -32,7 +32,7 @@ export class TaskComponent implements OnInit {
       seconds: new FormControl('0')
     });
     if (this.idTaskToEdit) {
-      this.taskService.getTask(this.idTaskToEdit).valueChanges().subscribe(data => {
+      this.taskService.GetTask(this.idTaskToEdit).valueChanges().subscribe(data => {
         const [hours, minutes, seconds] = data.timeToDo.split(':');
         this.myFormTask.setValue({
           description: data.description,
@@ -47,11 +47,11 @@ export class TaskComponent implements OnInit {
 
   async createTask() {
     if (this.myFormTask.valid) {
-      const user = await this.authService.getUser();
+      const user = await this.authService.GetUser();
       const { description, duration, hours, minutes, seconds } = this.myFormTask.value;
       const timeToDo = duration === 'manual' ? `${addZeros(hours)}:${addZeros(minutes)}:${addZeros(seconds)}` : duration === 'short' ? '00:30:00' : duration === 'medium' ? '00:45:00' : '01:00:00';
       if (this.idTaskToEdit) {
-        this.taskService.update(this.idTaskToEdit, {
+        this.taskService.Update(this.idTaskToEdit, {
           description,
           timeToDo,
           timeLeft: timeToDo,
@@ -69,7 +69,7 @@ export class TaskComponent implements OnInit {
         });
       } else {
 
-        this.taskService.create({
+        this.taskService.Create({
           description,
           timeToDo,
           timeLeft: timeToDo,
